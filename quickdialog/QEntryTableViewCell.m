@@ -90,6 +90,9 @@
                 if (width>titleWidth)
                     titleWidth = width;
             }
+            if ([el isKindOfClass:[QRadioItemElement class]]) {
+                titleWidth = 200;   //TODO: QRadioItemElement need to be calculate
+            }
         }
         _entryElement.parentSection.entryPosition = CGRectMake(titleWidth+20,10,totalWidth-titleWidth-_entryElement.appearance.cellBorderWidth-extra, self.frame.size.height-20);
     }
