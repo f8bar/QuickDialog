@@ -33,7 +33,7 @@
 @synthesize onValueChanged = _onValueChanged;
 @synthesize presentationMode = _presentationMode;
 @synthesize preselectedElementIndex = _preselectedElementIndex;
-
+@synthesize onSearch = _onSearch;
 
 - (QRootElement *)init {
     self = [super init];

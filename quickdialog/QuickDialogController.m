@@ -38,7 +38,20 @@
 
 + (QuickDialogController *)buildControllerWithClass:(Class)controllerClass root:(QRootElement *)root {
     controllerClass = controllerClass==nil? [QuickDialogController class] : controllerClass;
-    return [((QuickDialogController *)[controllerClass alloc]) initWithRoot:root];
+    //return [((QuickDialogController *)[controllerClass alloc]) initWithRoot:root];
+    QuickDialogController *controller = [((QuickDialogController *)[controllerClass alloc]) initWithRoot:root];
+    if (root.onSearch) {
+        UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, controller.view.frame.size.width, 44)];
+        searchBar.delegate = controller;
+        controller.quickDialogTableView.tableHeaderView = searchBar;
+    }
+    return controller;
+}
+
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    self.root.onSearch(searchText);
+    [self.quickDialogTableView reloadData];
 }
 
 + (QuickDialogController *)controllerForRoot:(QRootElement *)root {
@@ -109,9 +122,10 @@
     if (_root!=nil) {
         self.title = _root.title;
         self.navigationItem.title = _root.title;
-        if (_root.preselectedElementIndex !=nil)
-            [self.quickDialogTableView scrollToRowAtIndexPath:_root.preselectedElementIndex atScrollPosition:UITableViewScrollPositionTop animated:NO];
-
+        if (_root.preselectedElementIndex !=nil) {
+            //[self.quickDialogTableView scrollToRowAtIndexPath:_root.preselectedElementIndex atScrollPosition:UITableViewScrollPositionTop animated:NO];
+            [self.quickDialogTableView setContentOffset:CGPointMake(0, 0)];
+        }
     }
 }
 

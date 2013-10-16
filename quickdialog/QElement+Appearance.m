@@ -32,7 +32,9 @@ static void * const KEY_APPEARANCE_OBJECT = (void*)&KEY_APPEARANCE_OBJECT;
 - (QAppearance *)appearance {
     QAppearance *objAppearance = objc_getAssociatedObject(self, KEY_APPEARANCE_OBJECT);
     if (objAppearance==nil){
-        objAppearance = self.parentSection.rootElement.appearance;
+        if(self.parentSection.rootElement.appearance != nil) {
+            objAppearance = self.parentSection.rootElement.appearance;
+        }
     }
     if (objAppearance==nil) {
         objAppearance = [[self class] appearance];
