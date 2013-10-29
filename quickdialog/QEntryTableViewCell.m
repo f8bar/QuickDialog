@@ -95,8 +95,8 @@
             }
         }
         UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-        if(titleWidth > 200 && UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
-            titleWidth = 200;
+        if(titleWidth > 220 && UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
+            titleWidth = 220;
         }
         _entryElement.parentSection.entryPosition = CGRectMake(titleWidth+20,10,totalWidth-titleWidth-_entryElement.appearance.cellBorderWidth-extra, self.frame.size.height-20);
     }
