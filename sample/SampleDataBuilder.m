@@ -170,8 +170,9 @@
     boolElement.controllerAction = @"exampleAction:";
 	boolElement.key = @"bool1";
 	
-    QEntryElement *entryElement = [[QEntryElement alloc] initWithTitle:@"Entry Element" Value:nil Placeholder:@"type here"];
+    QEntryElement *entryElement = [[QEntryElement alloc] initWithTitle:@"elektronische Hebewerkregelung (EHR)" Value:nil Placeholder:@"type here"];
 	entryElement.key = @"entry1";
+    entryElement.labelingPolicy = QLabelingPolicyTrimTitle;
 
     NSArray *values = [NSArray arrayWithObjects:@"Ferrari", @"Ms.",@"Mrs.",@"Miss",@"Mr.",@"Prof.",@"A/Prof.",nil];
     QAutoEntryElement *autoElement = [[QAutoEntryElement alloc] initWithTitle:@"AutoComplete" value:nil placeholder:@"type letter M"];
